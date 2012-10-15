@@ -20,9 +20,37 @@ In order to get up and running, do the following:
 
 #. Create a vault via the AWS Glacier web UI or API.
 #. Create a user identity via IAM and set the policy so that it has write access to the
-   vault you just created. 
+   vault you just created (see sample below).
 #. Grab the access id and secret key for the newly-created identity and plug them into the 
    ``glacier.ini`` file (see the sample included in this repo).
 #. Fill out the remaining settings listed in the sample ``glacier.ini`` config file.
 #. Run the ``backup.py`` script.
  
+Sample IAM Policy
+=================
+
+Here's the IAM policy that I use to access my Glacier vault. Alter to suite::
+
+    {
+        "Statement":[{
+            "Effect":"Allow",
+            "Resource":[
+                "arn:aws:glacier:us-east-1:123456789:vaults/yourvaultname"
+            ],
+            "Action":[
+                "glacier:UploadArchive",
+                "glacier:InitiateMultipartUpload",
+                "glacier:UploadMultipartPart",
+                "glacier:UploadPart",
+                "glacier:DeleteArchive",
+                "glacier:ListParts",
+                "glacier:InitiateJob",
+                "glacier:ListJobs",
+                "glacier:GetJobOutput",
+                "glacier:ListMultipartUploads",
+                "glacier:CompleteMultipartUpload",
+                "glacier:DescribeVault",
+                "glacier:ListVaults"
+            ]
+        }]
+    }
