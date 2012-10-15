@@ -4,6 +4,16 @@ Overview
 Simple backup script that takes a list of directories, converts each one to a zip file, 
 and uploads them all to the given Amazon Glacier vault.
 
+Requirements
+============
+
+I have the following installed:
+
+* Python 2.7
+* boto 2.6.0 
+
+You could probably get away with Python 2.5+
+
 Usage
 =====
 
