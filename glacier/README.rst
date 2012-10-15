@@ -29,7 +29,10 @@ In order to get up and running, do the following:
 Sample IAM Policy
 =================
 
-Here's the IAM policy that I use to access my Glacier vault. Alter to suite::
+Since the web console doesn't yet have any pre-built IAM policies for Glacier (unless I 
+missed it..), you will have to create a custom policy. 
+
+Here's a sample policy that you can use. Alter to suite::
 
     {
         "Statement":[{
